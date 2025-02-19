@@ -1,3 +1,5 @@
+# This is a newly created Repository in only Draft status. Code is not tested. #
+
 # Home Assistant Energy Automations
 
 This repository contains configuration files for Home Assistant to support automation based on Nordpool energy spot prices. The automation includes:
