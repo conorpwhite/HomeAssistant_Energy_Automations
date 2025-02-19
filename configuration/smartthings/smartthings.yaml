@@ -5,7 +5,7 @@ automation:
   - alias: "Turn on heating when price is low"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.nordpool_kwh_eur_ee
+        entity_id: sensor.nordpool_kwh_sek_se4
         below: 0.05
     action:
       - service: switch.turn_on
@@ -14,7 +14,7 @@ automation:
   - alias: "Turn off heating when price is high"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.nordpool_kwh_eur_ee
+        entity_id: sensor.nordpool_kwh_sek_se4
         above: 0.05
     action:
       - service: switch.turn_off
