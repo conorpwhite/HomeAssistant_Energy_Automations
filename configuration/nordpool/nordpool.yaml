@@ -1,24 +1,32 @@
+# Nordpool Integration Configuration for Home Assistant
+#
+# This configuration file sets up a sensor and automation rules for adjusting the thermostat
+# based on Nordpool energy spot prices. It includes variables for region and currency, 
+# with default values set for the SE4 region and SEK currency.
+#
+# Variables:
+# - region: The Nordpool region for energy prices (default: SE4).
+# - currency: The currency for energy prices (default: SEK).
+# - sensor.nordpool_kwh_sek_se4: The Nordpool sensor entity for region SE4 and currency SEK.
+
 sensor:
+  # Nordpool sensor configuration
   - platform: nordpool
-    region: "{{ region | default('SE4') }}"
-    currency: "{{ currency | default('SEK') }}"
-    price_type: "kWh"
-    low_price_cutoff: 0.1
-    precision: 3
-    VAT: true
+    region: "{{ region | default('SE4') }}"  # The Nordpool region (default: SE4)
+    currency: "{{ currency | default('SEK') }}"  # The currency for energy prices (default: SEK)
+    price_type: "kWh"  # The type of price (kWh)
+    low_price_cutoff: 0.1  # The threshold for low price
+    precision: 3  # The precision of the sensor value
+    VAT: true  # Include VAT in the price
 
 automation:
+  # Automation to adjust the thermostat based on Nordpool price
   - alias: "Adjust thermostat based on Nordpool price"
     trigger:
+      # Trigger every 5 minutes
       - platform: time_pattern
         minutes: "/5"
     condition:
+      # Condition to check if the Nordpool price is below 0.1 SEK/kWh
       - condition: numeric_state
-        entity_id: sensor.nordpool_kwh_sek_se4
-        below: 0.1
-    action:
-      - service: climate.set_temperature
-        target:
-          entity_id: climate.your_thermostat
-        data:
-          temperature: 21
+        entity_id: sensor.nordpool_k ▋
