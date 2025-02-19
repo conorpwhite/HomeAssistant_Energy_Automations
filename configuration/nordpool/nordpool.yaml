@@ -1,7 +1,7 @@
 sensor:
   - platform: nordpool
-    region: "EE"
-    currency: "EUR"
+    region: "{{ region | default('SE4') }}"
+    currency: "{{ currency | default('SEK') }}"
     price_type: "kWh"
     low_price_cutoff: 0.1
     precision: 3
@@ -14,7 +14,7 @@ automation:
         minutes: "/5"
     condition:
       - condition: numeric_state
-        entity_id: sensor.nordpool_kwh_eur_ee
+        entity_id: sensor.nordpool_kwh_sek_se4
         below: 0.1
     action:
       - service: climate.set_temperature
