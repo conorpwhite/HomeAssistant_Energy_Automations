@@ -1,22 +1,40 @@
+# SmartThings Integration Configuration for Home Assistant
+#
+# This configuration file sets up automation rules for controlling heating based on 
+# Nordpool energy spot prices using SmartThings integration. The automations will 
+# turn on heating when the price is low and turn off heating when the price is high.
+#
+# Variables:
+# - YOUR_SMARTTHINGS_TOKEN: Replace with your actual SmartThings API token.
+# - sensor.nordpool_kwh_sek_se4: The Nordpool sensor entity for region SE4 and currency SEK.
+
 smartthings:
+  # SmartThings API token
   token: YOUR_SMARTTHINGS_TOKEN
 
 automation:
+  # Automation to turn on heating when the Nordpool price is low
   - alias: "Turn on heating when price is low"
     trigger:
+      # Trigger when the Nordpool price goes below 0.05 SEK/kWh
       - platform: numeric_state
         entity_id: sensor.nordpool_kwh_sek_se4
         below: 0.05
     action:
+      # Action to turn on the heating switch
       - service: switch.turn_on
         target:
           entity_id: switch.heating
+
+  # Automation to turn off heating when the Nordpool price is high
   - alias: "Turn off heating when price is high"
     trigger:
+      # Trigger when the Nordpool price goes above 0.05 SEK/kWh
       - platform: numeric_state
         entity_id: sensor.nordpool_kwh_sek_se4
         above: 0.05
     action:
+      # Action to turn off the heating switch
       - service: switch.turn_off
         target:
           entity_id: switch.heating
