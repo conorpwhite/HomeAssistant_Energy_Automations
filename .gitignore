@@ -1,0 +1,11 @@
+# Ignore Home Assistant database files
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore Home Assistant log files
+home-assistant.log
+home-assistant.log.*
+
+# Ignore Home Assistant configuration testing artifacts
+*.yaml.save
