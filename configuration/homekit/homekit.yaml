@@ -1,0 +1,24 @@
+homekit:
+  filter:
+    include_domains:
+      - light
+
+automation:
+  - alias: "Adjust lighting based on Nordpool price"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.nordpool_kwh_eur_ee
+        below: 0.05
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.living_room
+  - alias: "Dim lights when price is high"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.nordpool_kwh_eur_ee
+        above: 0.05
+    action:
+      - service: light.turn_off
+        target:
+          entity_id: light.living_room
