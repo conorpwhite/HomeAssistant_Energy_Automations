@@ -1,8 +1,8 @@
 # Home Assistant Energy Automations
 
 This repository contains configuration files for Home Assistant to support automation based on Nordpool energy spot prices. The automation includes:
-- Steering heating and cooling appliances using SmartThings integration
-- Steering lighting using HomeKit integrated devices
+- Steering heating and cooling appliances using SmartThings integration for use with e.g. Samsung heatpumps
+- Steering lighting using HomeKit integrated devices also works with IKEA Home Smart connected devices via Homekit integration
 
 ## Folder Structure
 - `configuration/nordpool/`: Contains the configuration for Nordpool energy spot prices.
