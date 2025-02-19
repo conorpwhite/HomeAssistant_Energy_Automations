@@ -29,4 +29,12 @@ automation:
     condition:
       # Condition to check if the Nordpool price is below 0.1 SEK/kWh
       - condition: numeric_state
-        entity_id: sensor.nordpool_k ▋
+        entity_id: sensor.nordpool_kwh_sek_se4
+        below: 0.1
+    action:
+      # Action to set the thermostat temperature to 21 degrees
+      - service: climate.set_temperature
+        target:
+          entity_id: climate.your_thermostat
+        data:
+          temperature: 21
