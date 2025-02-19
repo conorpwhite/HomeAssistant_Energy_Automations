@@ -1,4 +1,5 @@
 # This is a newly created Repository in only Draft status. Code is not tested. #
+Inspiration for this work is based on this blog post, https://www.auroranrunner.com/2024/03/18/home-assistant-heat-pump-automation-with-cheap-spot-hours-and-github-copilot-doing-the-work and related github confirations here. https://github.com/elsonico/Utilities/tree/master/HomeAssistant
 
 # Home Assistant Energy Automations
 
