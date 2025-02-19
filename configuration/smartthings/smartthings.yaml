@@ -1,0 +1,22 @@
+smartthings:
+  token: YOUR_SMARTTHINGS_TOKEN
+
+automation:
+  - alias: "Turn on heating when price is low"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.nordpool_kwh_eur_ee
+        below: 0.05
+    action:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.heating
+  - alias: "Turn off heating when price is high"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.nordpool_kwh_eur_ee
+        above: 0.05
+    action:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.heating
