@@ -18,11 +18,6 @@ This repository contains configuration files for Home Assistant to support autom
 4. Restart Home Assistant to apply the configurations.
 
 ## Configuration Files
-- `nordpool.yaml`: Configuration for Nordpool energy spot prices.
-- `smartthings.yaml`: Configuration for SmartThings integration.
-- `homekit.yaml`: Configuration for HomeKit integration.
-
-## Configuration Files
 ### configuration.yaml
 ```yaml
 # Define variables for Nordpool configuration
