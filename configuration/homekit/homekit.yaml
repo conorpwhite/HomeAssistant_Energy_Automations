@@ -1,24 +1,41 @@
+# HomeKit Integration Configuration for Home Assistant
+#
+# This configuration file sets up automation rules for controlling lighting based on 
+# Nordpool energy spot prices using HomeKit integration. The automations will 
+# turn on lights when the price is low and turn off (dim) lights when the price is high.
+#
+# Variables:
+# - sensor.nordpool_kwh_sek_se4: The Nordpool sensor entity for region SE4 and currency SEK.
+
 homekit:
+  # Configure the HomeKit integration to include only the light domain
   filter:
     include_domains:
       - light
 
 automation:
+  # Automation to turn on lights when the Nordpool price is low
   - alias: "Adjust lighting based on Nordpool price"
     trigger:
+      # Trigger when the Nordpool price goes below 0.05 SEK/kWh
       - platform: numeric_state
         entity_id: sensor.nordpool_kwh_sek_se4
         below: 0.05
     action:
+      # Action to turn on the living room lights
       - service: light.turn_on
         target:
           entity_id: light.living_room
+
+  # Automation to dim lights when the Nordpool price is high
   - alias: "Dim lights when price is high"
     trigger:
+      # Trigger when the Nordpool price goes above 0.05 SEK/kWh
       - platform: numeric_state
         entity_id: sensor.nordpool_kwh_sek_se4
         above: 0.05
     action:
+      # Action to turn off the living room lights
       - service: light.turn_off
         target:
           entity_id: light.living_room
