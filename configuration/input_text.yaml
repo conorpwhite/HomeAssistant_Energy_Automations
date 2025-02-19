@@ -1,0 +1,7 @@
+input_text:
+  nordpool_region:
+    name: Nordpool Region
+    initial: "SE4"
+  nordpool_currency:
+    name: Nordpool Currency
+    initial: "SEK"
